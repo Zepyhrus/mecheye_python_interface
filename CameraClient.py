@@ -5,7 +5,7 @@ import image_pb2
 import cameraStatus_pb2
 import cv2
 import numpy as np
-import pointCloud
+import open3d
 import ctypes
 from struct import unpack
 
@@ -126,7 +126,7 @@ class CameraClient(ZmqClient):
     def __init__(self):
         ZmqClient.__init__(self)
 
-    def setIp(self, ip):
+    def connect(self, ip):
         return ZmqClient.setAddr(self, ip, self.__kImagePort, 60000)
 
     def captureDepthImg(self):
@@ -220,5 +220,16 @@ class CameraClient(ZmqClient):
         reply = self.__sendRequest(NetCamCmd.CaptureGratingImage,4)
         depthC3 = read32FC3Mat(reply.imageGrating)
         color = self.captureColorImg()
-        return pointCloud.getRGBCloud(color, depthC3)
-        
+        return self.getRGBCloud(color, depthC3)
+    
+    def getRGBCloud(self,color,depth):
+        test_pcd = open3d.geometry.PointCloud()  # 定义点云
+        color.flatten()
+        color = color / 256
+        color.resize(int(np.size(color)/3),3)
+        depth.flatten()
+        depth = depth * 0.001
+        depth.resize(int(np.size(depth)/3),3)
+        test_pcd.points = open3d.utility.Vector3dVector(depth)  # 定义点云坐标位置
+        test_pcd.colors = open3d.utility.Vector3dVector(color)  # 定义点云的颜色
+        return test_pcd

@@ -16,9 +16,9 @@ if __name__ == '__main__':
     camera = CameraClient()
     save_file = True
     # camera ip should be modified to actual ip address
-    camera_ip = "192.168.3.76"
+    camera_ip = "192.168.3.180"
     # always set ip before do anything else
-    if not camera.setIp(camera_ip):
+    if not camera.connect(camera_ip):
         exit(-1)
     # get some camera info like intrincis, ip, id and Version
     intri = camera.getCameraIntri()
