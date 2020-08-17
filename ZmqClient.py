@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 import zmq
-
-import image_pb2
-import cameraStatus_pb2
+from protobuf import image_pb2
+from protobuf import cameraStatus_pb2
 
 
 def createAddr(ip, port):

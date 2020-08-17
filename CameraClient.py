@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 from ZmqClient import ZmqClient
 import sys
-import image_pb2
-import cameraStatus_pb2
+from protobuf import image_pb2
+from protobuf import cameraStatus_pb2
 import cv2
 import numpy as np
 import open3d
@@ -92,24 +92,14 @@ def read32FC3Mat(data):
     scale = readDouble(data,0)[0]
     matC1 = cv2.imdecode(asMat(data,SIZE_OF_DOUBLE),cv2.IMREAD_ANYDEPTH)
     bias16UC3 = matC1ToC3(matC1)
-    # cv2.imshow("1",bias16UC3)
-    # cv2.waitKey(0)
     t = np.float32(bias16UC3)
     mat32F = (t - Encode32FBias)/scale
-    # rel = mat32F / scale
-    # rel = rel.astype(np.float32)
-    # print(rel[500][500])
-    # cv2.imshow("1",bias16UC3)
-    # cv2.waitKey(0)
-    # cv2.imshow("2",t)
-    cv2.imwrite("D:\\python.png",mat32F)
     return mat32F
 
 def read32FC1Mat(data, offset=0):
     if len(data) == 0:
         return []
     scale = readDouble(data, offset)
-
     bias16U = cv2.imdecode(asMat(data, SIZE_OF_DOUBLE + offset), cv2.IMREAD_ANYDEPTH)
     bias32F = bias16U.astype(np.float32)
     mat32F = bias32F
