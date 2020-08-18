@@ -9,14 +9,14 @@ import numpy as np
 import os
 import open3d
 
-SAVE_PATH = "D:"
+SAVE_PATH = "."
 
 if __name__ == '__main__':
 
     camera = CameraClient()
     save_file = True
     # camera ip should be modified to actual ip address
-    camera_ip = "192.168.3.180"
+    camera_ip = "192.168.3.146"
     # always set ip before do anything else
     if not camera.connect(camera_ip):
         exit(-1)
@@ -39,7 +39,7 @@ if __name__ == '__main__':
         cv2.imwrite(SAVE_PATH + "/mechmind_depth.png", depth)
         cv2.imwrite(SAVE_PATH + "/mechmind_color.jpg", color)
     # set some parameters of camera, you can refer to parameters' names in Mech_eye
-    print(camera.setParameter("camera2DExpTime",15))
+    camera.setParameter("camera2DExpTime",15)
     print(camera.getParameter("camera2DExpTime"))
     camera.setParameter("camera2DExpTime",20)
     print(camera.getParameter("camera2DExpTime"))
