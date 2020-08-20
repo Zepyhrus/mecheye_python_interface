@@ -70,7 +70,7 @@ All interfaces and functions are in  **CameraClient.py**.
 There are two main classes: CameraClient and ZmqClient. CameraClient is subclass of ZmqClient. You only need to focus on CameraClient.
 
 * **CameraClient**
-  * **connect()** : connect to the camera according to its ip address.
+  * **connect()** : connect to the camera according to its IP address.
   
   * **captureDepthImg()** : capture a depth image and return it.
   
@@ -120,14 +120,14 @@ The original project provides a **sample.py** to show how to use interfaces.
 
 This sample mainly shows how to set camera's paramters like exposure time.
 
-First, we need to know the actual ip address of camera and set it, and then connect:
+First, we need to know the actual IP address of camera and set it, and then connect:
 
 ```python
 camera = CameraClient()
 save_file = True
-# camera ip should be modified to actual ip address
+# camera IP should be modified to actual IP address
 camera_ip = "192.168.3.146"
-# always set ip before do anything else
+# always set IP before do anything else
 if not camera.connect(camera_ip):
 	exit(-1)
 
