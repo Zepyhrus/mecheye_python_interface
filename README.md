@@ -76,7 +76,7 @@ There are two main classes: CameraClient and ZmqClient. CameraClient is subclass
   
   * **captureColorImg()** : capture a color image and return it.
   
-  * **getCameraIntri()**: get camera's intrinsics.
+  * **getCameraIntri()**: get camera's intrinsic parameters.
   
   * **getCameraIp()**: get camera's ip address.
   
