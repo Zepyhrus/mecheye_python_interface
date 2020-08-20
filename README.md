@@ -35,7 +35,7 @@ Then clone this repo and you are good to go.
 
 ## Quick Start
 
-In terminal, change your working directory to the repo, and the run :
+In terminal, change your working directory to the repo, then in  **sample.py**, modify the IP address in line19 to your actual camera address, then run:
 
 ```powershell
 python sample.py
@@ -82,9 +82,9 @@ There are two main classes: CameraClient and ZmqClient. CameraClient is subclass
   
   * **getCameraVersion()**: get camera's version number.
   
-  * **getParameter()** : get the value of a spefic parameter in camera.
+  * **getParameter()** : get the value of a specific parameter in camera.
   
-  * **setParameter()** : set the value of a spefic parameter in camera.
+  * **setParameter()** : set the value of a specific parameter in camera.
   
     **Note**：Some parameters cannot be set in this version, they are available in next version. But they can still be set in Mech_eye. Here are all parameters can be set now(You can check them in Mech_eye software):
   
@@ -118,7 +118,7 @@ There are two main classes: CameraClient and ZmqClient. CameraClient is subclass
 
 The original project provides a **sample.py** to show how to use interfaces. 
 
-This sample mainly shows how to set camera's paramters like exporeture time.
+This sample mainly shows how to set camera's paramters like exposure time.
 
 First, we need to know the actual ip address of camera and set it, and then connect:
 
