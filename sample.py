@@ -39,11 +39,33 @@ if __name__ == '__main__':
         cv2.imwrite(SAVE_PATH + "/mechmind_depth.png", depth)
         cv2.imwrite(SAVE_PATH + "/mechmind_color.jpg", color)
     # set some parameters of camera, you can refer to parameters' names in Mech_eye
+    
+    # get rgb point cloud. Using open3d to store and visualize the cloud.
+    pcd = camera.captureCloud()
+    open3d.visualization.draw_geometries([pcd])
+    # set some parameters of camera, you can refer to parameters' names in Mech_eye
     camera.setParameter("camera2DExpTime",15)
     print(camera.getParameter("camera2DExpTime"))
     camera.setParameter("camera2DExpTime",20)
     print(camera.getParameter("camera2DExpTime"))
-    # get rgb point cloud. Using open3d to store and visualize the cloud.
-    pcd = camera.captureCloud()
-    open3d.visualization.draw_geometries([pcd])
+    # The following is all parameters can be set
+    print(camera.setParameter("period", 20))
+    print(camera.setParameter("isNanoType", 0))
+    print(camera.setParameter("lightPower", 300))
+    print(camera.setParameter("syncExposure", 1))
+    print(camera.setParameter("exposure1", 0.3))
+    print(camera.setParameter("exposure2", 6))
+    print(camera.setParameter("exposure3", 6))
+    print(camera.setParameter("gain", 0))
+    print(camera.setParameter("useBinning", 0))
+    print(camera.setParameter("useColorHdr", 0))
+    print(camera.setParameter("camera2DExpTime", 40))
+    print(camera.setParameter("expectedGrayValue", 120))
+    print(camera.setParameter("sharpenFactor", 0))
+    print(camera.setParameter("contrastThres", 10))
+    print(camera.setParameter("strength", 5))
+    print(camera.setParameter("useMedianBlur", 1))
+    print(camera.setParameter("hasThinObject", 0))
+    print(camera.setParameter("lowerLimit", 800))
+    print(camera.setParameter("upperLimit", 1100))
     exit(0)

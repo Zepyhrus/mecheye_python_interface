@@ -71,26 +71,29 @@ There are two main classes: CameraClient and ZmqClient. CameraClient is subclass
 
 * **CameraClient**
   * **connect()** : connect to the camera according to its IP address.
-  
+
   * **captureDepthImg()** : capture a depth image and return it.
-  
+
   * **captureColorImg()** : capture a color image and return it.
-  
+
   * **getCameraIntri()**: get camera's intrinsic parameters.
-  
+
   * **getCameraIp()**: get camera's ip address.
-  
+
   * **getCameraVersion()**: get camera's version number.
-  
+
   * **getParameter()** : get the value of a specific parameter in camera.
-  
+
   * **setParameter()** : set the value of a specific parameter in camera.
-  
+
+    **Attention**: Please be sure to know the meaning of your setting of parameters, **wrong setting could cause some errors in the interfaces!**
+
     **Note**：Some parameters cannot be set in this version, they are available in next version. But they can still be set in Mech_eye. Here are all parameters can be set now(You can check them in Mech_eye software):
-  
+
     * **Projection** part:
       * period
       * isNanoType
+      * lightPower
       * syncExposure
     * **3D scaning** part:
       * exposure1
@@ -102,7 +105,7 @@ There are two main classes: CameraClient and ZmqClient. CameraClient is subclass
     * **2D scaning** part:
       * camera2DExpTime
       * expectedGrayValue
-      * sharpenfactor
+      * sharpenFactor
     * **filter** part:
       * contrastThres
       * strength
@@ -111,7 +114,7 @@ There are two main classes: CameraClient and ZmqClient. CameraClient is subclass
     * **depth limit** part:
       * lowerLimit
       * upperLimit
-  
+
   * **captureCloud()** : get a point cloud, open3d is used to store and process cloud data.
 
 ### Intro to samples
