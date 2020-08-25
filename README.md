@@ -3,9 +3,9 @@ This is official Python interfaces for Mech-Eye cameras.
 
 ## Introduction
 
-This project is developped by python. We use ZeroMQ library to connect camera devices in the LANs. And Google protobuf is used to pack and unpack data from network.
+This project is developped by python. We use ZeroMQ library to connect camera devices in the LANs. And Google protobuf is used to pack and unpack data from networks.
 
-## Features 
+## Features
 
 By using these interfaces, you can easily control your mech_eye cameras in python programs. The features are as follows:
 
