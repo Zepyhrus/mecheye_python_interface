@@ -1,6 +1,8 @@
 # Mech-Eye_python_interface
 This is official Python interfaces for Mech-Eye cameras. 
 
+If you are using Mech-Eye cameras with firmware version older than 1.0.0, please switch to Branch 0.4.0.
+
 ## Introduction
 
 This project is developped by python. We use ZeroMQ library to connect camera devices in the LANs. And Google protobuf is used to pack and unpack data from network.
