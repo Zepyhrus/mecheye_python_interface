@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 import os
 import open3d
+import yaml
 
 SAVE_PATH = "D:"
 
@@ -13,7 +14,7 @@ if __name__ == '__main__':
     camera = CameraClient()
     save_file = True
     # camera ip should be modified to actual ip address
-    camera_ip = "192.168.3.226"
+    camera_ip = "192.168.3.189"
     # always set ip before do anything else
     if not camera.connect(camera_ip):
         exit(-1)
@@ -24,9 +25,16 @@ if __name__ == '__main__':
     print ("Version: %s" % (camera.getCameraVersion()))
 
     # capture depth image and color image and save them
-    depth = camera.captureDepthImg()
     color = camera.captureColorImg()
-
+    depth = camera.captureDepthImg()
+    # save depth data
+    with open('output.yaml', 'w') as f:
+        yaml.dump({"depth_data": np.array(depth)}, f)
+    # read depth data
+    with open('output.yaml', 'r') as f:
+        depth_data = np.array(yaml.load(f,Loader=yaml.Loader)['depth_data'])
+        print(depth_data)
+    
     if len(depth) == 0 or len(color) == 0:
         exit(-2)
 
@@ -46,3 +54,4 @@ if __name__ == '__main__':
     print(camera.setParameter("scan2dExposureTime",20)) # set exposure time to 20ms
     print(camera.getParameter("scan2dExposureTime"))
     exit(0)
+    
